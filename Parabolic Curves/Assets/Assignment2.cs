@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Assignment2 : ProcessingLite.GP21
 {
-    float spaceBetweenLines = 0.2f;
+    float numberOfLines = 20;
 
     void Start()
     {
@@ -17,19 +17,22 @@ public class Assignment2 : ProcessingLite.GP21
         Background(240, 150, 178);
 
         //Draw our scan lines
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i <= numberOfLines; i++)//Index = 0 i start, loopen kollar om index är under höjden på skärmen, loopen lägger +1 på index
         {
 
+            float y1 = Height - i * Height/numberOfLines;
+            float x2 = i * Width/numberOfLines;
+           
             if (i % 3 == 0)
             {
-                Stroke(128, 128, 128);
+                Stroke(255, 255, 255);
             }
             else
             {
-                Stroke(0, 0, 0);
+                Stroke(35, 135, 208);
             }
 
-            Line(0, 10 - i, i, 0);
+            Line(0, y1, x2, 0);//Första X-koordinaten = 0, första y-koordinaten är höjden på skärmen - index, andra x = index, andra y = 0
 
         }
     }
